@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Validasi data pada Fronted End
+![Validasi pada FE](https://github.com/user-attachments/assets/ca85f22f-41a0-43b0-92e6-294d88840461)
+## Tampilan FE jika list kosong
+![Halaman tampilan list kosong pada aplikasi Simple Notes](https://github.com/user-attachments/assets/85ea2ff3-6650-442d-81cd-6b0e315b7be7)
+## Tampilan FE jika berisi 6 notes
+![Halaman tampilan yang berisi 6 notes](https://github.com/user-attachments/assets/33f3a844-5e14-4cfc-ab38-b5fc84619be4)
+
