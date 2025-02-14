@@ -1,0 +1,58 @@
+<p-dialog
+  [header]="selectedNote ? 'Update Note' : 'Add new Note'"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '50rem' }"
+  (onHide)="onCancel()"
+>
+  <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <p-card styleClass="mb-6">
+      <div class="p-field">
+        <label for="title" class="block text-sm font-medium mb-2"> Title</label>
+        <input
+          pInputText
+          id="title"
+          class="w-full"
+          formControlName="title"
+          placeholder="Enter the title"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            noteForm.get('title')?.invalid && noteForm.get('title')?.touched
+          "
+          style="color: red"
+        >
+          Title is Required</small
+        >
+      </div>
+      <div class="space-y-6 mt-6"></div>
+      <div class="p-field">
+        <label for="content" class="block text-sm font-medium mb-2">
+          Content</label
+        >
+        <textarea
+          pTextarea
+          rows="10"
+          cols="30"
+          id="content"
+          class="w-full"
+          formControlName="content"
+        ></textarea>
+        <small
+          class="p-error"
+          *ngIf="
+            noteForm.get('content')?.invalid && noteForm.get('content')?.touched
+          "
+          style="color: red"
+        >
+          Content is Required</small
+        >
+      </div>
+    </p-card>
+  </form>
+  <div class="flex justify-end gap-2">
+    <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+    <p-button label="Save" (click)="onSubmit()" />
+  </div>
+</p-dialog>

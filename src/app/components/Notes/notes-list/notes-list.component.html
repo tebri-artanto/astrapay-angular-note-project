@@ -1,0 +1,60 @@
+<div class="container mx-auto p-4 ">
+  <p-toast />
+  <app-confirmation-modal #confirmDialog />
+  <div>
+    <div class="bg-slate-800 rounded-lg shadow-lg p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-white">Notes App</h1>
+      </div>
+      <p-button (click)="showNoteDialog()" label="Add new Note" />
+      <div *ngIf="!noteList?.length" class="text-center py-8">
+        <p class="text-white text-lg">There are no notes yet! Click Add Note to have one</p>
+      </div>
+
+      <div *ngIf="noteList?.length" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-6">
+        <p-card
+          *ngFor="let note of noteList"
+          (click)="showNoteDialog(note)"
+          styleClass="cursor-pointer transform transition-transform hover:-translate-y-1 bg-gray-300"
+          [style]="{ 'min-width': '100%', background: 'white' }"
+        >
+          <div class="flex flex-col">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                {{ note.title }}
+              </h3>
+              <p class="text-gray-700 text-sm mb-5">
+                {{ truncateContent(note.content, 100) }}
+              </p>
+            </div>
+
+            <div class="mt-auto">
+              <p-chip
+                [label]="formatDate(note.createdDate)"
+                styleClass="text-xs bg-blue-100 text-gray-600"
+              />
+              <div class="flex justify-end">
+                <p-button
+                  icon="pi pi-trash"
+                  severity="danger"
+                  (click)="delete($event, note.id)"
+                  styleClass="p-button-rounded p-button-sm"
+                />
+              </div>
+            </div>
+          </div>
+        </p-card>
+      </div>
+    </div>
+
+    <div>
+      <app-note-dialog
+        [(visible)]="dialogNoteVisible"
+        [selectedNote]="seletedNoteId"
+        (save)="onSubmit($event)"
+        (cancel)="onNoteCancel()"
+      >
+      </app-note-dialog>
+    </div>
+  </div>
+</div>

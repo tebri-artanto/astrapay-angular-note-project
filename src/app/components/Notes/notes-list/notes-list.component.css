@@ -1,0 +1,11 @@
+:host ::ng-deep {
+  .p-scroller-viewport {
+      flex: none;
+  }
+
+  p-skeleton {
+      width: 100%;
+  }
+}
+
+
